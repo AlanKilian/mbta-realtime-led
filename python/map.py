@@ -56,14 +56,11 @@ class MapController(object):
         self.board_okay = False
         try:
             self.board = ArduinoBridge()
-            time.sleep(2)
             self.last_state = None
             self.board_okay = True
             print('ready')
         except BaseException:
             print('fail')
-            time.sleep(10)
-
 
 class Visualization(object):
     def __init__(self):

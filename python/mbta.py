@@ -10,17 +10,26 @@ from util import *
 class APIRequest(object):
     @staticmethod
     def make_request(method, parameters=None):
+        headers = {'accept': 'application/vnd.api+json'}
         parameters = parameters or {}
-        parameters['format'] = 'json'
-        t = json.loads(requests.get(
-            'http://realtime.mbta.com/developer/api/v2/' + method + '/',
-            params=parameters
-        ).text)
+        print("----> make_request")
+        print("----> method = ", end="")
+        print(method)
+        print("----> parameters = ",end="")
+        print(parameters)
+        r = requests.get(
+            'https://api-v3.mbta.com/' + method + '?',
+            params=parameters, headers=headers
+        )
+        print("https://api-v3.mbta.com/stops?filter%5Broute%5D=Red")
+        print(r.url)
+        t = json.loads(r.text)
+        print(t)
         return t
 
     @staticmethod
     def stops_by_route(route):
-        return APIRequest.make_request('stopsbyroute', {'route': route})
+        return APIRequest.make_request('stops', {'filter[route]': route})
 
 
 class Route(object):
@@ -36,7 +45,7 @@ class Route(object):
     def get_trains(self):
         trains = []
         req = APIRequest.make_request(
-            'vehiclesbyroute', {'route': self.api_name})
+            'vehicles', {'filter?[route]': self.api_name})
         if not req.get('direction'):
             return []
         for direction in req['direction']:
