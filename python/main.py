@@ -1,11 +1,7 @@
 import time
 from datetime import *
-
-import schedule
-
 from map import *
 from data import *
-from server import setup
 
 ctrl = MapController()
 
