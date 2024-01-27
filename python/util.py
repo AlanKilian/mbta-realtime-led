@@ -1,13 +1,5 @@
 import math
 
-
-def read(filename):
-    f = open(filename, 'r')
-    text = f.read()
-    f.close()
-    return text
-
-
 def pairwise(list):
     for i in xrange(0, len(list) - 1):
         yield list[i], list[i + 1]

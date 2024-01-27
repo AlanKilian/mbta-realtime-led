@@ -47,21 +47,21 @@ class MapController(object):
         try:
             self.board.write(writes, time.time() - t0)
         except Exception as e:
-            print e
+            print(e)
             self.board_okay = False
         self.steps += 1
 
     def reset_board(self):
-        print 'reset'
+        print('reset')
         self.board_okay = False
         try:
             self.board = ArduinoBridge()
             time.sleep(2)
             self.last_state = None
             self.board_okay = True
-            print 'ready'
+            print('ready')
         except BaseException:
-            print 'fail'
+            print('fail')
             time.sleep(10)
 
 

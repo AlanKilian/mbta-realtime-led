@@ -8,12 +8,9 @@ from util import *
 
 
 class APIRequest(object):
-    API_KEY = read('../API_KEY.txt').strip()
-
     @staticmethod
     def make_request(method, parameters=None):
         parameters = parameters or {}
-        parameters['api_key'] = APIRequest.API_KEY
         parameters['format'] = 'json'
         t = json.loads(requests.get(
             'http://realtime.mbta.com/developer/api/v2/' + method + '/',
