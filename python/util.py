@@ -1,13 +1,13 @@
 import math
 
 def pairwise(list):
-    for i in xrange(0, len(list) - 1):
+    for i in range(0, len(list) - 1):
         yield list[i], list[i + 1]
 
 
 def both(a, b):
     assert len(a) == len(b)
-    for i in xrange(len(a)):
+    for i in range(len(a)):
         yield a[i], b[i], i
 
 
@@ -66,7 +66,7 @@ def fancy_time_diff(this, that=None):
     instr = []
     same_t = True
     diff_start_t = 0
-    for i in xrange(len(this)):
+    for i in range(len(this)):
         if test_same_t(this, that, i):
             if same_t:
                 # Still the same
@@ -90,7 +90,7 @@ def fancy_time_diff(this, that=None):
     for (start, end) in time_diffs:
         color = this[start]
         last_switch = start
-        for i in xrange(start + 1, end + 1):
+        for i in range(start + 1, end + 1):
             if this[i] != this[i - 1]:
                 instr.append((
                     last_switch,
