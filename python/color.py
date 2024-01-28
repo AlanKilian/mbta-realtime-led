@@ -7,8 +7,9 @@ def to_rgb(hex):
 
 
 def to_hex(rgb):
+    print(rgb)
     return rgb[0] << 16 | rgb[1] << 8 | rgb[2]
 
 
 def adjust_brightness(hex, by=1):
-    return to_hex(map(lambda c: int(c * by), to_rgb(hex)))
+    return to_hex(to_rgb(hex))

@@ -47,15 +47,8 @@ def set_brightness(b):
 
 
 def run():
-    schedule.every().day.at("%s:00" % (ON_HOUR % 24)).do(wake)
-    schedule.every().day.at("%s:00" % (OFF_HOUR % 24)).do(sleep)
-    setup(set_mode, set_brightness)
-    if is_on_time():
-        wake()
-    else:
-        sleep()
+    wake()
     while True:
-        schedule.run_pending()
         ctrl.tick()
 
 

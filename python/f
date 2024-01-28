@@ -1,0 +1,345 @@
+reset
+ready
+========= RealTimeVisualization
+========= RealTimeVisualization after --init--
+----> make_request
+----> method = stops
+----> parameters = {'filter[route]': 'Red'}
+Station object: name = Alewife
+--- Setting station name to Alewife
+stations.get('JFK/UMass') returns None
+Alewife
+Station object: name = Davis
+--- Setting station name to Davis
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Station object: name = Porter
+--- Setting station name to Porter
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Station object: name = Harvard
+--- Setting station name to Harvard
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Station object: name = Central
+--- Setting station name to Central
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Station object: name = Kendall/MIT
+--- Setting station name to Kendall/MIT
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Station object: name = Charles/MGH
+--- Setting station name to Charles/MGH
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Station object: name = Park Street
+--- Setting station name to Park Street
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Station object: name = Downtown Crossing
+--- Setting station name to Downtown Crossing
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+Station object: name = South Station
+--- Setting station name to South Station
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Station object: name = Broadway
+--- Setting station name to Broadway
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Station object: name = Andrew
+--- Setting station name to Andrew
+stations.get('JFK/UMass') returns None
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+Station object: name = JFK/UMass
+--- Setting station name to JFK/UMass
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Station object: name = Savin Hill
+--- Setting station name to Savin Hill
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Station object: name = Fields Corner
+--- Setting station name to Fields Corner
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Station object: name = Shawmut
+--- Setting station name to Shawmut
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Shawmut
+Station object: name = Ashmont
+--- Setting station name to Ashmont
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Shawmut
+Ashmont
+Station object: name = North Quincy
+--- Setting station name to North Quincy
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Shawmut
+Ashmont
+North Quincy
+Station object: name = Wollaston
+--- Setting station name to Wollaston
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Shawmut
+Ashmont
+North Quincy
+Wollaston
+Station object: name = Quincy Center
+--- Setting station name to Quincy Center
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Shawmut
+Ashmont
+North Quincy
+Wollaston
+Quincy Center
+Station object: name = Quincy Adams
+--- Setting station name to Quincy Adams
+stations.get('JFK/UMass') returns JFK/UMass
+Alewife
+Davis
+Porter
+Harvard
+Central
+Kendall/MIT
+Charles/MGH
+Park Street
+Downtown Crossing
+South Station
+Broadway
+Andrew
+JFK/UMass
+Savin Hill
+Fields Corner
+Shawmut
+Ashmont
+North Quincy
+Wollaston
+Quincy Center
+Quincy Adams
+Station object: name = Braintree
+--- Setting station name to Braintree
+stations.get('JFK/UMass') returns JFK/UMass
+red_a
+Route __init__
+Stations.get(Alewife) returns:
+Alewife
+Alewife
+Stations.get(Davis) returns:
+Davis
+Davis
+Stations.get(Porter) returns:
+Porter
+Porter
+Stations.get(Harvard) returns:
+Harvard
+Harvard
+Stations.get(Central) returns:
+Central
+Central
+Stations.get(Kendall/MIT) returns:
+Kendall/MIT
+Kendall/MIT
+Stations.get(Charles/MGH) returns:
+Charles/MGH
+Charles/MGH
+Stations.get(Park Street) returns:
+Park Street
+Park Street
+Stations.get(Downtown Crossing) returns:
+Downtown Crossing
+Downtown Crossing
+Stations.get(South Station) returns:
+South Station
+South Station
+Stations.get(Broadway) returns:
+Broadway
+Broadway
+Stations.get(Andrew) returns:
+Andrew
+Andrew
+Stations.get(JFK/Umass) returns:
+None
+None

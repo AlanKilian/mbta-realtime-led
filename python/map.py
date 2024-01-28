@@ -106,7 +106,7 @@ class FlashVisualization(Visualization):
         )
         if True:
             for strip_name in STRIPS:
-                for i in xrange(len(s.strips[strip_name])):
+                for i in range(len(s.strips[strip_name])):
                     s.strips[strip_name][i] = c
         return (s, 1)
 
@@ -119,7 +119,7 @@ class FlashRouteVisualization(Visualization):
         c = ROUTE_COLORS[bright_route_name]
         for seg in ROUTE_SEGMENTS[bright_route_name]:
             (strip, start, end) = seg[0:3]
-            for i in xrange(start, end + 1):
+            for i in range(start, end + 1):
                 s.strips[strip][i] = c
         return (s, 1)
 
@@ -138,7 +138,7 @@ class SlideRouteVisualization(Visualization):
         j = 0
         for seg in ROUTE_SEGMENTS[bright_route_name]:
             (strip, start, end, rev) = seg[0:4]
-            rng = xrange(end, start - 1, -1) if rev else xrange(start, end + 1)
+            rng = range(end, start - 1, -1) if rev else range(start, end + 1)
             for i in rng:
                 s.strips[strip][i] = adjust_brightness(
                     c, brightness * (1 - min(1, float(abs(j - subtick)) / 10)))
@@ -148,13 +148,18 @@ class SlideRouteVisualization(Visualization):
 
 class RealTimeVisualization(Visualization):
     def __init__(self):
+        print("========= RealTimeVisualization")
         super(RealTimeVisualization, self).__init__()
+        print("========= RealTimeVisualization after --init--")
         api_routes = mbta.Routes(mbta.Stations())
+        print("========= RealTimeVisualization after Routes")
         self.last_time_update = None
         self.update_time = 10
         self.routes = {}
         for route_name in ROUTES:
             r = MapRoute(route_name, api_routes.get(route_name))
+            print("------------",end="")
+            print(r)
             self.routes[route_name] = r
 
     def update(self, tick=None, time=None):
@@ -285,13 +290,13 @@ class MapRoute(object):
                     return 'o'
             else:
                 return '-'
-        return self.name + ' ' + ''.join(map(marker, xrange(0, self.length())))
+        return self.name + ' ' + ''.join(map(marker, range(0, self.length())))
 
 
 class MapState(object):
     def __init__(self):
         self.strips = {}
-        for name, (index, length) in STRIPS.iteritems():
+        for name, (index, length) in STRIPS.items():
             self.strips[name] = [0] * length
 
     def diff_with(self, other):
@@ -302,10 +307,10 @@ class MapState(object):
                 that = other.strips[k]
             else:
                 that = None
-            writes = writes + map(
-                lambda instr: StripWrite(STRIPS[k][0], *instr),
-                fancy_time_diff(this, that)
-            )
+            #writes = writes + map(
+            #    lambda instr: StripWrite(STRIPS[k][0], *instr),
+            #    fancy_time_diff(this, that)
+            #)
         return writes
 
     def set_light_color(self, strip, index, color):
@@ -315,7 +320,7 @@ class MapState(object):
 
     def set_segment_color(self, strip, start, end, color):
         if self.strips.get(strip):
-            for i in xrange(start, end + 1):
+            for i in range(start, end + 1):
                 self.set_light_color(strip, i, color)
 
 
@@ -334,7 +339,7 @@ class RouteMapState(MapState):
 class FadeRouteMapState(RouteMapState):
     def __init__(self, routes, tick, should_update=False):
         super(FadeRouteMapState, self).__init__(routes, tick, should_update)
-        for name, mr in routes.iteritems():
+        for name, mr in routes.items():
             if should_update:
                 mr.update_trains()
                 mr.locate_trains()
@@ -349,7 +354,7 @@ class FadeRouteMapState(RouteMapState):
                     map(
                         lambda l: (
                             l, max(0, 1 - abs(location - l) / FADE_SIZE)),
-                        xrange(r_loc - FADE_SIZE, r_loc + FADE_SIZE)
+                        range(r_loc - FADE_SIZE, r_loc + FADE_SIZE)
                     )
                 )
                 for r_ind, brightness in lights:
@@ -370,7 +375,7 @@ class FadeRouteMapState(RouteMapState):
 class BlinkRouteMapState(RouteMapState):
     def __init__(self, routes, tick, should_update=False):
         super(BlinkRouteMapState, self).__init__(routes, tick, should_update)
-        for name, mr in routes.iteritems():
+        for name, mr in routes.items():
             if should_update:
                 mr.nb_update_trains()
             mr.update_lock.acquire()

@@ -21,10 +21,10 @@ class APIRequest(object):
             'https://api-v3.mbta.com/' + method + '?',
             params=parameters, headers=headers
         )
-        print("https://api-v3.mbta.com/stops?filter%5Broute%5D=Red")
-        print(r.url)
+        #print("https://api-v3.mbta.com/stops?filter%5Broute%5D=Red")
+        #print(r.url)
         t = json.loads(r.text)
-        print(t)
+        #print(t)
         return t
 
     @staticmethod
@@ -34,13 +34,32 @@ class APIRequest(object):
 
 class Route(object):
     def __init__(self, stations, name, api_name=None, train_filter=None):
+        #print("Route __init__")
+        #print("In Route __init__ stations are:")
+        #for st in Route.get(stations):
+        #    print(st)
+        #print("In Route __init__ stations end")
+        #print("stations are:")
+        #for st in stations.get(stations):
+        #    print(st)
+        #print("stations end")
         self.name = name
         self.api_name = api_name or name
         self.stations = map(stations.get, ROUTES[name])
+        #print("----------- After map -------------")
+        #print("In Route __init__ stations are:")
+        #for st in Route.get(stations):
+        #    print(st)
+        #print("In Route __init__ stations end")
+        #print(list(self.stations))
         self.stations_dict = {}
         for st in self.stations:
+        #    print(st)
             self.stations_dict[st.name] = st
         self.train_filter = train_filter
+        
+    def get(self):
+        return self.stations
 
     def get_trains(self):
         trains = []
@@ -87,11 +106,21 @@ class Route(object):
 
 class Routes(object):
     def __init__(self, stations):
+        #print("Routes __init__")
         self.routes = {}
         for k in API_ROUTE_NAMES:
+            #print("A----> ",end="")
+            #print(k)
+            #print("In Routes __init__ stations are:")
+            #for st in Route.get(stations):
+            #    print(st)
+            #print("In Routes __init__ stations end")
             self.routes[k] = Route(stations, k, API_ROUTE_NAMES[k])
+            #print("====")
+            #print(self.routes)
         for k in API_ROUTE_FILTERS:
             self.routes[k].train_filter = API_ROUTE_FILTERS[k]
+
 
     def all(self):
         for k in self.routes:
@@ -118,6 +147,8 @@ class Station(object):
         self.lines = set()
         self.name = name
         self.location = location
+        #print("Station object: name = ",end="")
+        #print(name)
 
     def __str__(self):
         return self.name
@@ -129,22 +160,34 @@ class Station(object):
 class Stations(object):
     def __init__(self):
         self.stations = {}
-        govt_center = Station('Government Center', (42.359444, -71.059444))
-        self.stations['Government Center'] = govt_center
-        self.stations['Government Center'].lines = set(['Green', 'Blue'])
         for route in API_ROUTE_NAMES.values():
             res = APIRequest.stops_by_route(route)
-            # print res
-            stops = res['direction'][0]['stop']
+            stops = res['data']
             for s in stops:
-                name = s['parent_station_name']
+                #print("--->")
+                #print(s)
+                name = s['attributes']['name']
+                #print("StationS object: name= ",end="")
+                #print(name)
+                #for q in self.stations:
+                #    print(q)
                 station = Station(
-                    name, (float(s['stop_lat']), float(s['stop_lon'])))
+                    name, (float(s['attributes']['latitude']), float(s['attributes']['longitude'])))
                 if not self.stations.get(name):
+                    #print("--- Setting station name to ",end="")
+                    #print(name)
                     self.stations[name] = station
+                else:
+                    5/0
                 self.stations[name].lines.add(route.split('-')[0])
+                #print("stations.get('JFK/UMass') returns ",end="")
+                #print(self.stations.get('JFK/UMass'))
 
     def get(self, name):
+        #print("Stations.get(",end="")
+        #print(name,end="")
+        #print(") returns:")
+        #print(self.stations.get(name))
         return self.stations.get(name)
 
     def get_location(self, name):
