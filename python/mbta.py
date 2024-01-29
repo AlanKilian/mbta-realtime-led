@@ -34,34 +34,41 @@ class APIRequest(object):
 
 class Route(object):
     def __init__(self, stations, name, api_name=None, train_filter=None):
-        #print("Route __init__")
-        #print("In Route __init__ stations are:")
-        #for st in Route.get(stations):
-        #    print(st)
-        #print("In Route __init__ stations end")
-        #print("stations are:")
-        #for st in stations.get(stations):
-        #    print(st)
-        #print("stations end")
+        print("Route __init__")
+        print("In Route __init__ stations are:")
+        for st in Route.get(stations):
+            print(st)
+        print("In Route __init__ stations end")
         self.name = name
         self.api_name = api_name or name
         self.stations = map(stations.get, ROUTES[name])
-        #print("----------- After map -------------")
-        #print("In Route __init__ stations are:")
-        #for st in Route.get(stations):
-        #    print(st)
-        #print("In Route __init__ stations end")
-        #print(list(self.stations))
+        print("----------- After map -------------")
+        print("In Route __init__ stations are:")
+        for st in Route.get(stations):
+            print(st)
+        print("In Route __init__ stations end")
         self.stations_dict = {}
+        print("--------------- Route __init__ ----------")
         for st in self.stations:
-        #    print(st)
+            #print(st)
             self.stations_dict[st.name] = st
         self.train_filter = train_filter
+        print("In Route __init__ ABOUT TO RETURN stations are:")
+        for st in Route.get(stations):
+            print(st)
+        print("In Route __init__ ABOUT TO RETURN stations end")
         
     def get(self):
+        print("-------------- Route get ----------------");
+        print("self = ",end="")
+        print(self)
+        for st in self.stations:
+            print(st)
+        print("-------------- Route get end ----------------");
         return self.stations
 
     def get_trains(self):
+        print("--------------- get_trains --------------------")
         trains = []
         req = APIRequest.make_request(
             'vehicles', {'filter[route]': self.api_name})
@@ -92,6 +99,21 @@ class Route(object):
         return trains
 
     def locate_train(self, train):
+        print("------------- locate_train  Stations -----------------")
+        print("self = ",end="")
+        print(self)
+        for st in self.stations:
+            print(st)
+        print("------------- locate_train  Stations  END-----------------")
+        for p in pairwise(self.stations):
+            print(p)
+            print(p[0].location);
+            print(p[1].location);
+            print(point_line_segment_distance(
+                p[0].location,
+                p[1].location,
+                train.location))
+
         between = min(
             pairwise(
                 self.stations),
@@ -109,6 +131,7 @@ class Route(object):
         if train.direction == 1:
             between = tuple(reversed(between))
             progress = 1 - progress
+        print("------------- locate_train end -----------------")
         return (between[0], between[1], progress)
 
 
@@ -124,11 +147,12 @@ class Routes(object):
             #    print(st)
             #print("In Routes __init__ stations end")
             self.routes[k] = Route(stations, k, API_ROUTE_NAMES[k])
+            print("Routes self = ",end="")
+            print(self)
             #print("====")
             #print(self.routes)
         for k in API_ROUTE_FILTERS:
             self.routes[k].train_filter = API_ROUTE_FILTERS[k]
-
 
     def all(self):
         for k in self.routes:

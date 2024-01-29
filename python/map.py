@@ -110,42 +110,6 @@ class FlashVisualization(Visualization):
                     s.strips[strip_name][i] = c
         return (s, 1)
 
-
-class FlashRouteVisualization(Visualization):
-    def update(self, tick, time):
-        s = MapState()
-        keys = sorted(ROUTES.keys())
-        bright_route_name = keys[tick % len(keys)]
-        c = ROUTE_COLORS[bright_route_name]
-        for seg in ROUTE_SEGMENTS[bright_route_name]:
-            (strip, start, end) = seg[0:3]
-            for i in range(start, end + 1):
-                s.strips[strip][i] = c
-        return (s, 1)
-
-
-class SlideRouteVisualization(Visualization):
-    def __init__(self):
-        self.route_ticks = 150
-
-    def update(self, tick, time):
-        subtick = tick % self.route_ticks
-        s = MapState()
-        keys = sorted(ROUTES.keys())
-        bright_route_name = keys[(tick / self.route_ticks) % len(keys)]
-        c = ROUTE_COLORS[bright_route_name]
-        brightness = 0.05 * BRIGHTNESS_MULTIPLIERS[c]
-        j = 0
-        for seg in ROUTE_SEGMENTS[bright_route_name]:
-            (strip, start, end, rev) = seg[0:4]
-            rng = range(end, start - 1, -1) if rev else range(start, end + 1)
-            for i in rng:
-                s.strips[strip][i] = adjust_brightness(
-                    c, brightness * (1 - min(1, float(abs(j - subtick)) / 10)))
-                j = j + 1
-        return (s, 1)
-
-
 class RealTimeVisualization(Visualization):
     def __init__(self):
         print("========= RealTimeVisualization")
@@ -158,7 +122,7 @@ class RealTimeVisualization(Visualization):
         self.routes = {}
         for route_name in ROUTES:
             r = MapRoute(route_name, api_routes.get(route_name))
-            print("------------",end="")
+            print("------------ ",end="")
             print(r)
             self.routes[route_name] = r
 

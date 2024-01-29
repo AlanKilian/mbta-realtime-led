@@ -1,7 +1,10 @@
 import math
 
 def pairwise(l):
+    print("pairwise")
+    print(list(l))
     for i in range(0, len(list(l)) - 1):
+        print(i)
         yield l[i], l[i + 1]
 
 

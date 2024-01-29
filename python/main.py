@@ -7,13 +7,11 @@ ctrl = MapController()
 
 modes = {
     "RealTimeVisualization": RealTimeVisualization(),
-    "SleepyVisualization": SleepyVisualization(),
-    "SlideVisualization": SlideRouteVisualization()
 }
 
 # aliases
 modes["on"] = modes["RealTimeVisualization"]
-modes["off"] = modes["SlideVisualization"]
+modes["off"] = modes["RealTimeVisualization"]
 
 brightness = {"on": 0.1, "off": 0.3}
 
