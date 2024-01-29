@@ -1,13 +1,13 @@
 import math
 
-def pairwise(list):
-    for i in range(0, len(list) - 1):
-        yield list[i], list[i + 1]
+def pairwise(l):
+    for i in range(0, len(list(l)) - 1):
+        yield l[i], l[i + 1]
 
 
 def both(a, b):
     assert len(a) == len(b)
-    for i in range(len(a)):
+    for i in range(len(list(a))):
         yield a[i], b[i], i
 
 

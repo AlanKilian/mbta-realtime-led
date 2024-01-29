@@ -1,73 +1,56 @@
-{
- 'attributes': {
- 'address':
- 'Dorchester Ave and Southhampton St, South Boston, MA 02127',
- 'at_street': None,
- 'description': None,
- 'latitude': 42.330154,
- 'location_type': 1,
- 'longitude': -71.057655,
- 'municipality':
- 'Boston',
- 'name':
- 'Andrew',
- 'on_street': None,
- 'platform_code': None,
- 'platform_name': None,
- 'vehicle_type': None,
- 'wheelchair_boarding': 1},
+{'attributes': {'bearing': 130,
+ 'carriages': [{'label':
+ '1702',
+ 'occupancy_percentage': None,
+ 'occupancy_status':
+ 'NO_DATA_AVAILABLE'}, {'label':
+ '1703',
+ 'occupancy_percentage': None,
+ 'occupancy_status':
+ 'NO_DATA_AVAILABLE'}, {'label':
+ '1615',
+ 'occupancy_percentage': None,
+ 'occupancy_status':
+ 'NO_DATA_AVAILABLE'}, {'label':
+ '1614',
+ 'occupancy_percentage': None,
+ 'occupancy_status':
+ 'NO_DATA_AVAILABLE'}, {'label':
+ '1626',
+ 'occupancy_percentage': None,
+ 'occupancy_status':
+ 'NO_DATA_AVAILABLE'}, {'label':
+ '1627','occupancy_percentage': None,
+ 'occupancy_status':
+ 'NO_DATA_AVAILABLE'}],
+ 'current_status':
+ 'STOPPED_AT',
+ 'current_stop_sequence': 30,
+ 'direction_id': 0,
+ 'label':
+ '1702','latitude': 42.37396,
+ 'longitude': -71.11874,
+ 'occupancy_status': None,
+ 'revenue':
+ 'REVENUE',
+ 'speed': None,
+ 'updated_at':
+ '2024-01-28T17:31:53-05:00'},
  'id':
- 'place-andrw',
- 'links': {
- 'self':
- '/stops/place-andrw'},
- 'relationships': {
- 'facilities': {
- 'links': {
- 'related':
- '/facilit ies/?filter[stop]=place-andrw'}},
- 'parent_station': {
- 'data': None},
- 'zone': {
- 'data': None}},
+ 'R-547A7D90',
+ 'links': {'self':
+ '/vehicles/R-547A7D90'},
+ 'relationships': {'route': {'data': {'id':
+ 'Red',
  'type':
- 'stop'}
-
-{
- 'attributes': {
- 'address':
- '599 Old Colony Ave, Boston, MA 02127-3805',
- 'at_street': None,
- 'description': None,
- 'latitude': 42.320685,
- 'location_type': 1,
- 'longitude': -71.052391,
- 'municipality':
- 'Boston',
- 'name':
- 'JFK/UMass',
- 'on_street': None,
- 'platform_code': None,
- 'platform_name': None,
- 'vehicle_type': None,
- 'wheelchair_boarding': 1},
- 'id':
- 'place-jfk',
- 'links': {
- 'self':
- '/stops/place-jfk'},
- 'relationships': {
- 'facilities': {
- 'links': {
- 'related':
- '/facilities/?filter[stop]= place-jfk'}},
- 'parent_station': {
- 'data': None},
- 'zone': {
- 'data': {
- 'id':
- 'CR-zone-1A',
+ 'route'}},
+ 'stop': {'data': {'id':
+ '70067',
  'type':
- 'zone'}}},
+ 'stop'}},
+ 'trip': {'data': {'id':
+ '60393083',
  'type':
- 'stop'}
+ 'trip'}}},
+ 'type':
+ 'vehicle'}

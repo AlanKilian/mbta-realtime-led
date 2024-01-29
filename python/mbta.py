@@ -12,17 +12,17 @@ class APIRequest(object):
     def make_request(method, parameters=None):
         headers = {'accept': 'application/vnd.api+json'}
         parameters = parameters or {}
-        print("----> make_request")
-        print("----> method = ", end="")
-        print(method)
-        print("----> parameters = ",end="")
-        print(parameters)
+        #print("----> make_request")
+        #print("----> method = ", end="")
+        #print(method)
+        #print("----> parameters = ",end="")
+        #print(parameters)
         r = requests.get(
             'https://api-v3.mbta.com/' + method + '?',
             params=parameters, headers=headers
         )
         #print("https://api-v3.mbta.com/stops?filter%5Broute%5D=Red")
-        #print(r.url)
+        print(r.url)
         t = json.loads(r.text)
         #print(t)
         return t
@@ -64,23 +64,31 @@ class Route(object):
     def get_trains(self):
         trains = []
         req = APIRequest.make_request(
-            'vehicles', {'filter?[route]': self.api_name})
-        if not req.get('direction'):
+            'vehicles', {'filter[route]': self.api_name})
+        #print(req)
+        if not req.get('data'):
             return []
-        for direction in req['direction']:
-            for trip in direction['trip']:
-                trains.append(Train(
-                    trip['trip_name'],
-                    trip['trip_id'],
-                    (
-                        float(trip['vehicle']['vehicle_lat']),
-                        float(trip['vehicle']['vehicle_lon'])
-                    ),
-                    int(direction.get('direction_id') or '0'),
-                    int(trip['vehicle']['vehicle_timestamp'])
-                ))
-        if self.train_filter:
-            trains = filter(self.train_filter, trains)
+        for vehicle in req['data']:
+            #print("vehicle = ")
+            #print(vehicle)
+            trains.append(Train(
+                #FIXME trip_name and trip_id
+                "None",
+                "1",
+                (
+                    float(vehicle['attributes']['latitude']),
+                    float(vehicle['attributes']['longitude'])
+                ),
+                int(vehicle['attributes']['direction_id']),
+                #FIXME
+                #int(vehicle['attributes']['updated_at'])
+                0
+                )
+            )
+        #if self.train_filter:
+            #trains = filter(self.train_filter, trains)
+        for t in trains:
+            print(t)
         return trains
 
     def locate_train(self, train):
